@@ -19,7 +19,7 @@ namespace Dropbox_Dev1
         static async Task<bool> getmyaccount()
         {
             //passing the target URL into a string. Target endpoint is below
-            //endpoint below sends back data equivilant to that in the PBA json schema
+
             string url = "https://api.dropboxapi.com/2/team_log/get_events";
 
             //instantiating a webrequest and passing the target endpoint url from above into it
