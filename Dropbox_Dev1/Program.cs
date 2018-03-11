@@ -27,7 +27,7 @@ namespace Dropbox_Dev1
 
             //setting appropriate headers for the HTTP request
             request.ContentType = "application/json";
-            request.Headers.Add("Authorization", "Bearer teHGRgW-saAAAAAAAAAAW8gdZaBufKxOD0XS3fq7_HCmPtJlEd0gimDfib69FVDq");
+            request.Headers.Add("Authorization", "Bearer teHGRgW-saAAAAAAAAAA09H6NA-kpaTFXVUM7j1ctaCXm0OOiNGK5WXXrYKOtgOL");
 
             request.Method = "POST";//Dropbox's API communicates using the POST methos, so that header is set appropriately
 
@@ -49,9 +49,22 @@ namespace Dropbox_Dev1
                     //process the response
                     StreamReader reader = new StreamReader(stream, Encoding.ASCII);
                     String responseString = reader.ReadToEnd();
-                    //response written to console
-                    Console.WriteLine(responseString);
-                    Console.ReadLine();
+
+                    //response written to a json.gz file
+                    string path = @"c:\Users\Andrew\Desktop\Test.json.gz";
+
+                    if (!File.Exists(path))
+                    {
+                        File.WriteAllText(path, responseString);
+                        Console.WriteLine("You have successfully written to a file.");
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: the file already exists.");
+                        Console.ReadLine();
+                    }
+
                     return true;
                 }
             }

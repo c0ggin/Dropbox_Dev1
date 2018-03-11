@@ -1,1 +1,8 @@
 c:\users\acoggin16\documents\visual studio 2015\Projects\Dropbox_Dev1\Dropbox_Dev1\bin\Debug\Dropbox_Dev1.exe.config
+C:\Users\Andrew\Source\Repos\Dropbox_Dev1\Dropbox_Dev1\bin\Debug\Dropbox_Dev1.exe.config
+C:\Users\Andrew\Source\Repos\Dropbox_Dev1\Dropbox_Dev1\bin\Debug\Dropbox_Dev1.exe
+C:\Users\Andrew\Source\Repos\Dropbox_Dev1\Dropbox_Dev1\bin\Debug\Dropbox_Dev1.pdb
+C:\Users\Andrew\Source\Repos\Dropbox_Dev1\Dropbox_Dev1\obj\Debug\Dropbox_Dev1.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Source\Repos\Dropbox_Dev1\Dropbox_Dev1\obj\Debug\Dropbox_Dev1.csproj.CoreCompileInputs.cache
+C:\Users\Andrew\Source\Repos\Dropbox_Dev1\Dropbox_Dev1\obj\Debug\Dropbox_Dev1.exe
+C:\Users\Andrew\Source\Repos\Dropbox_Dev1\Dropbox_Dev1\obj\Debug\Dropbox_Dev1.pdb
