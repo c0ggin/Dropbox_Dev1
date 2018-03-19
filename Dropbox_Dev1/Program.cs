@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Dropbox_Dev1
 {
@@ -19,7 +20,6 @@ namespace Dropbox_Dev1
         static async Task<bool> getmyaccount()
         {
             //passing the target URL into a string. Target endpoint is below
-
             string url = "https://api.dropboxapi.com/2/team_log/get_events";
 
             //instantiating a webrequest and passing the target endpoint url from above into it
@@ -49,21 +49,29 @@ namespace Dropbox_Dev1
                     //process the response
                     StreamReader reader = new StreamReader(stream, Encoding.ASCII);
                     String responseString = reader.ReadToEnd();
+                    //Json.NET stuff 
+                    dynamic array = JsonConvert.DeserializeObject(responseString);
+                    string json = Convert.ToString(array);
 
                     //response written to a json.gz file
-                    string path = @"c:\Users\Andrew\Desktop\Test.json.gz";
+                    string path = @"c:\Users\Andrew\Desktop\Test.text";
 
                     if (!File.Exists(path))
                     {
-                        File.WriteAllText(path, responseString);
+                        File.WriteAllText(path, json);
                         Console.WriteLine("You have successfully written to a file.");
                         Console.ReadLine();
                     }
+                    //if the file already exists
                     else
                     {
-                        Console.WriteLine("Error: the file already exists.");
+                        Console.WriteLine("Here is the following data: " + "\n");
+
+                        string readText = File.ReadAllText(path);
+                        Console.WriteLine(readText);
                         Console.ReadLine();
                     }
+
 
                     return true;
                 }
