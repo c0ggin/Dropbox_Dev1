@@ -9,21 +9,10 @@ using Newtonsoft.Json;
 
 namespace Dropbox_Dev1
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Net;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Newtonsoft.Json;
-
-    namespace Dropbox_Current_Events
-    {
         class Program
         {
             //this is the cursor's file name, it is used in several places in the code so it is easier to intialize it at the top
-            static string cursorPath = @"c:\Users\egronewald16\Desktop\Cursor.json.gz";
+            static string cursorPath = @"c:\Users\acoggin16\Desktop\Cursor.json.gz";
 
             //create the timestamp to be a part of the data's file name, this code also exists in the 3 spots it is used if you would like to not use a static variable
             static DateTime ts = DateTime.Now;
@@ -54,7 +43,7 @@ namespace Dropbox_Dev1
 
                     //Data requested is then fetched and stored
                     string postData = "null\n";
-                    UTF8Encoding encoding = new UTF8Encoding();
+                    ASCIIEncoding encoding = new ASCIIEncoding();
                     byte[] byte1 = encoding.GetBytes(postData);
                     request.ContentLength = byte1.Length;
                     Stream newStream = request.GetRequestStream();
@@ -68,19 +57,15 @@ namespace Dropbox_Dev1
                         using (Stream stream = response.GetResponseStream())
                         {
                             //process the response
-                            StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                            StreamReader reader = new StreamReader(stream, Encoding.ASCII);
                             String responseString = reader.ReadToEnd();
 
                             //Json.NET stuff 
                             dynamic array = JsonConvert.DeserializeObject(responseString);
                             string json = Convert.ToString(array);
 
-                            //create the timestamp to be a part of the data's file name
-                            //DateTime ts = DateTime.Now;
-                            //String timeStamp = String.Format("{0:MM-dd-yyyy}", ts);
-
                             //response written to file
-                            string path = @"c:\Users\egronewald16\Desktop\DropboxData" + timeStamp + ".json.gz";
+                            string path = @"c:\Users\acoggin16\Desktop\DropboxData" + timeStamp + ".json.gz";
 
                             if (!File.Exists(path))
                             {
@@ -145,7 +130,7 @@ namespace Dropbox_Dev1
                             //String timeStamp = String.Format("{0:MM-dd-yyyy}", ts);
 
                             //response written to file
-                            string path = @"c:\Users\egronewald16\Desktop\DropboxData" + timeStamp + ".json.gz";
+                            string path = @"c:\Users\acoggin16\Desktop\DropboxData" + timeStamp + ".json.gz";
 
                             if (!File.Exists(path))
                             {
@@ -173,8 +158,6 @@ namespace Dropbox_Dev1
                 string oldCursor;
                 if (File.Exists(cursorPath))
                 {
-                    //StreamReader cursorStream = new StreamReader(cursorPath);
-                    //oldCursor = cursorStream.ReadLine(); 
                     oldCursor = File.ReadAllText(cursorPath);
                 }
                 else   //handles the error if we somehow end up here without the cursor file existing
@@ -193,7 +176,7 @@ namespace Dropbox_Dev1
                 //create the timestamp to be a part of the data's file name
                 //DateTime ts = DateTime.Now;
                 //String timeStamp = String.Format("{0:MM-dd-yyyy}", ts);
-                string path = @"c:\Users\egronewald16\Desktop\DropboxData" + timeStamp + ".json.gz";
+                string path = @"c:\Users\acoggin16\Desktop\DropboxData" + timeStamp + ".json.gz";
                 if (File.Exists(path))
                 {
                     List<string> listJSON = new List<string>();
@@ -228,5 +211,4 @@ namespace Dropbox_Dev1
                 }
             }
         }
-    }
 }
